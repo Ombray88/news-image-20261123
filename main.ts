@@ -1,8 +1,10 @@
 import { copyFileSync, mkdirSync, statSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
-const srcFile = 'entry.png';
+const srcFile = join(__dirname, 'entry.png');
 const dstFile = join(outDir, 'entry.png');
 
 try {
